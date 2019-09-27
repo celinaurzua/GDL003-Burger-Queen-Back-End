@@ -4,7 +4,8 @@
   "description": "## 1. Preámbulo",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
   "homepage": "https://github.com/celinaurzua/GDL003-Burger-Queen-Back-End#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-validator": "^6.2.0",
+    "morgan": "^1.9.1",
     "nodemon": "^1.19.2"
   }
 }
