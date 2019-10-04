@@ -122,3 +122,8 @@ router.get('/list',(req, res)=> {
 
     module.exports = router
   
+
+
+
+    //conexion con front a traves de direccion ip y hacer pruebas
+    //
