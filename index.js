@@ -1,17 +1,23 @@
-/*
+const  mongoose= require('mongoose')
 const express = require('express')
 const app = express()
-
 const products= require('./routes/products')
 app.use(express.json())//parsear los objetos json atraves del middleware, el cual analizara la peticion y la convierte en json
 app.use('/api/products', products)//creando path que va a llamar con  el modulo products.js
+const port = process.env.PORT || 27017
+app.listen(port, console.log('Escuchando en puerto: '+port))
 
-const port = process.env.PORT || 3003
+
+mongoose.connect('mongodb+srv://tagleurzua:mothersofcode@ciboullet-fc4ex.gcp.mongodb.net/cafedb', {useNewUrlParser: true})
+  .then(resp=>console.log('Conectando correctamente a MongoDB'))
+  .catch(err => console.log('Error al conectarse a MongoDB'))
+
+
+
+/*
 
 const date= require('./date')//usando middleware propio
 const morgan= require('morgan')//usando middleware de express
-
-
 app.use(date)
 Té durazno-naranja
 app.use(morgan('tiny'))*/
@@ -30,10 +36,9 @@ app.use('/api/products/list',(req, res, next)=>{
 })
 */
 
-/*app.listen(port, console.log('Escuchando en puerto: '+port))*/
 
-
-
+/*
+*********************************************************************************************
 
 //agregando mongoose
 const mongoose = require('mongoose');
@@ -45,15 +50,15 @@ mongoose.connect('mongodb+srv://tagleurzua:mothersofcode@ciboullet-fc4ex.gcp.mon
   .catch(err => console.log('Error al conectarse a MongoDB'))
 
 
-  const productSchema= new mongoose.Schema({
-    name: String,
-    price: Number,
-    categories: String,
-    date: {type: Date, default: Date.now}
-  })
+    const productSchema= new mongoose.Schema({
+      name: String,
+      price: Number,
+      categories: String,
+      date: {type: Date, default: Date.now}
+    })
 
 
-const Product= mongoose.model('products', productSchema)
+  const Product= mongoose.model('products', productSchema)
 
 
 
@@ -131,15 +136,16 @@ const updateProduct= async (id)=> {
   if(!product){
     return
   }else{
-    product.price= 100
-    product.name='Frappé de Mazapán VIP'
+    product.price= 30
+    product.name='Frappé de Mazapán'
+    //product.image='https://i.imgur.com/f1i52N4.jpg'
 
     const result= await product.save()
-    console.log(result)
+    console.log('El cambio es: ',result)
   }
 }
 
-//updateProduct('5d9670ac2060a01af0d924b3')
+updateProduct('5d96d2ef18d8dc2b6a430015')
 
 const updateSecondtProduct= async (id)=>{
   const result= await Product.update(
@@ -162,6 +168,9 @@ const deletProduct= async (id)=>{
 }
 //deletProduct('5d967532e9a06d1d6696f3c1')
 
+
+
+*/
 
 
 
