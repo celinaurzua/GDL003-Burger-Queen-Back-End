@@ -11,6 +11,7 @@ app.listen(port, console.log('Escuchando en puerto: '+port))
 
 
 mongoose.connect('mongodb+srv://tagleurzua:mothersofcode@ciboullet-fc4ex.gcp.mongodb.net/cafedb', {useNewUrlParser: true, useUnifiedTopology: true })
+
   .then(resp=>console.log('Conectando correctamente a MongoDB'))
   .catch(err => console.log('Error al conectarse a MongoDB'))
 

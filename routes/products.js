@@ -37,6 +37,7 @@ router.get('/:id', async (req, res)=>{
 
   })
 
+
 router.put('/:id', [
   check('name').isLength({ min: 2 }),//validacion de los datos de name por parte de express-validator
   check('price').isLength({ min: 1 })
@@ -58,7 +59,9 @@ router.put('/:id', [
   if (!product){
     return res.status(404).send('El producto con ese ID no existe')
   }
-  res.status(204).send('Producto actualizado')
+
+  res.status(200).send('El producto ha sido editado')
+
 })
 
 
