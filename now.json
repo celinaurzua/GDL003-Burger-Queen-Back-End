@@ -1,0 +1,27 @@
+{
+    "name": "my-mongodb-api",
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.js",
+        "use": "@now/node-server"
+      }
+    ],
+    "routes":[{
+      "src":"/products",
+      "dest":"/index.js",
+      "methods":["GET","POST","PUT","DELETE"]
+    },
+    {
+      "src":"/orders",
+      "dest":"/index.js",
+      "methods":["GET","POST", "PUT","DELETE"]
+    }
+     
+    ],
+    "env": {
+      "MONGODB_URI": "@ciboullet"
+    }
+  }
+  
+  

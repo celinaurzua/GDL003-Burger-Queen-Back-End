@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const express = require('express')
-const Product = require('../models/products')
+const Product = require('../../models/products')
 const router = express.Router()
 const { check, validationResult } = require('express-validator');//libreria de validacion de informacion cliente
 
