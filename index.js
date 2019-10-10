@@ -2,13 +2,15 @@ const  mongoose= require('mongoose')
 const express = require('express')
 const app = express()
 const products= require('./routes/products')
+const orders= require('./routes/orders')
 app.use(express.json())//parsear los objetos json atraves del middleware, el cual analizara la peticion y la convierte en json
 app.use('/api/products', products)//creando path que va a llamar con  el modulo products.js
+app.use('/api/orders', orders)
 const port = process.env.PORT || 27017
 app.listen(port, console.log('Escuchando en puerto: '+port))
 
 
-mongoose.connect('mongodb+srv://tagleurzua:mothersofcode@ciboullet-fc4ex.gcp.mongodb.net/cafedb', {useNewUrlParser: true, useFindAndModify:false})
+mongoose.connect('mongodb+srv://tagleurzua:mothersofcode@ciboullet-fc4ex.gcp.mongodb.net/cafedb', {useNewUrlParser: true, useUnifiedTopology: true })
   .then(resp=>console.log('Conectando correctamente a MongoDB'))
   .catch(err => console.log('Error al conectarse a MongoDB'))
 

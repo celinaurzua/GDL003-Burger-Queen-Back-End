@@ -35,7 +35,7 @@ router.get('/:id', async (req, res)=>{
     const result= await product.save()
     res.status(201).send(result);//devolviendo el elemento nuevo que se creo con status 201 ya que es el resultado de solicitud metodo post
 
-
+  })
 
 router.put('/:id', [
   check('name').isLength({ min: 2 }),//validacion de los datos de name por parte de express-validator
@@ -46,19 +46,21 @@ router.put('/:id', [
     return res.status(422).json({ errors: errors.array() });
   }
 
-  const product = await product.findByIdAndUpdate(req.params.id, {
+  const product = await Product.findByIdAndUpdate(req.params.id, {
     name: req.body.name,
     price: req.body.price,
     categories: req.body.categories
   },
-    {
+  {
       new: true
-    })
-  if (!product) {
+  })
+
+  if (!product){
     return res.status(404).send('El producto con ese ID no existe')
   }
-  res.status(204).send(product)
+  res.status(204).send('Producto actualizado')
 })
+
 
 router.delete('/:id', async (req, res) => {
 
@@ -69,5 +71,5 @@ router.delete('/:id', async (req, res) => {
 
   res.status(200).send('Producto eliminado')
 })
-
+  
 module.exports = router
