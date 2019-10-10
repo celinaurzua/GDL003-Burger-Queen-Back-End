@@ -7,13 +7,13 @@ const { check, validationResult } = require('express-validator');//libreria de v
 
 router.get('/', async (req, res) => {
   const products = await Product.find()
-  res.send(products)
+  res.json(products)
 })  
 
 router.get('/:id', async (req, res)=>{
     const product= await Product.findById(req.params.id)
     if(!product) return res.status(404).send('No se encontró el producto')
-    res.send(product)
+    res.json(product)
   })
  
   router.post('/', [

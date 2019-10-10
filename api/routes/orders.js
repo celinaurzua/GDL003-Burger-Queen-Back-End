@@ -37,4 +37,45 @@ router.get('/', async (req, res) => {
     })
 
 
+
+
+
+    router.put('/:id', [
+      check('user').isLength({ min: 1 }),//validacion de los datos de name por parte de express-validator
+      check('items').isLength({ min: 1 })
+    ], async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+      }
+    
+      const order = await Order.findByIdAndUpdate(req.params.id, {
+        user: req.body.user,
+        items: req.body.items,
+      
+      },
+      {
+          new: true
+      })
+    
+      if (!product){
+        return res.status(404).send('La orden con ese ID no existe')
+      }
+    
+      res.status(200).send('La orden ha sido editada')
+    
+    })
+    
+    
+    router.delete('/:id', async (req, res) => {
+    
+      const order = await Order.findByIdAndDelete(req.params.id)
+      if (!order) {
+        return res.status(404).send('Id de esa orden no existe y no se puede borrar')
+      }
+    
+      res.status(200).send('Orden eliminada')
+    })
+
+
 module.exports = router

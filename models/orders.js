@@ -6,7 +6,8 @@ const orderSchema= new mongoose.Schema({
       required: true,
       minlength: 1
     },
-    items: {
+    items:
+    {
         type: Array,
         required: true,
     },
