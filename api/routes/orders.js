@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const express = require('express')
-const Order = require('../models/orders')
+const Order = require('../../models/orders')
 const router = express.Router()
 const { check, validationResult } = require('express-validator');
 

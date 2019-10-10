@@ -1,11 +1,11 @@
 const  mongoose= require('mongoose')
 const express = require('express')
 const app = express()
-const products= require('./routes/products')
-const orders= require('./routes/orders')
+const products= require('./api/routes/products')
+const orders= require('./api/routes/orders')
 app.use(express.json())//parsear los objetos json atraves del middleware, el cual analizara la peticion y la convierte en json
-app.use('/api/products', products)//creando path que va a llamar con  el modulo products.js
-app.use('/api/orders', orders)
+app.use('/products', products)//creando path que va a llamar con  el modulo products.js
+app.use('/orders', orders)
 const port = process.env.PORT || 27017
 app.listen(port, console.log('Escuchando en puerto: '+port))
 

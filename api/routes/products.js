@@ -1,19 +1,19 @@
 const mongoose = require('mongoose')
 const express = require('express')
-const Product = require('../models/products')
+const Product = require('../../models/products')
 const router = express.Router()
 const { check, validationResult } = require('express-validator');//libreria de validacion de informacion cliente
 
 
 router.get('/', async (req, res) => {
   const products = await Product.find()
-  res.json(products)
+  res.send(products)
 })  
 
 router.get('/:id', async (req, res)=>{
     const product= await Product.findById(req.params.id)
     if(!product) return res.status(404).send('No se encontró el producto')
-    res.json(product)
+    res.send(product)
   })
  
   router.post('/', [
