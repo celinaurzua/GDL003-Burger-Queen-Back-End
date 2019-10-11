@@ -21,6 +21,11 @@
       "src":"/orders",
       "dest":"/index.js",
       "methods":["GET","POST", "PUT","DELETE"]
+    },
+    {
+      "src":"/categories",
+      "dest":"/index.js",
+      "methods":["GET","POST"]
     }
      
     ],
