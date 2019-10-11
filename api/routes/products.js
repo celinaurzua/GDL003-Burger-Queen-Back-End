@@ -15,6 +15,13 @@ router.get('/:id', async (req, res)=>{
     if(!product) return res.status(404).send('No se encontró el producto')
     res.json(product)
   })
+
+router.get('/:categories', async (req, res)=>{
+  const product= await Product.find({categories:'BEBIDAS FRIAS'})
+  if(!product) return res.status(404).send('No se encontró la categoría')
+  res.send(product)
+})
+
  
   router.post('/', [
     check('name').isLength({min:2}),

@@ -9,12 +9,6 @@ router.get('/', async (req, res) => {
     res.send(categories)
   })  
   
-router.get('/:categories', async (req, res)=>{
-    const categories= await Categories.find(req.params.categories)
-    if(!categories) return res.status(404).send('No se encontró la categoría')
-    res.send(categories)
-  })
-
   router.post('/', [
     check('categories').isLength({min:1})
   ],async (req, res)=>{
